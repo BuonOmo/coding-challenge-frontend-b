@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchDepartures, updateSearch} from '../actions'
+import ErrorMessage from '../components/errorMessage'
 import SearchForm from '../components/searchForm'
 import ResultList from '../components/resultList'
 
@@ -48,7 +49,7 @@ class App extends Component {
 					onSubmit={e => this.handleSearchClick(e)}
 				/>
 				{isFetching && 'loading...'}
-				{isError && error}
+				{isError && <ErrorMessage message={error}/>}
 				{!(isError || isEmpty) && <ResultList departures={departures}/>}
 			</div>
 		)
